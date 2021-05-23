@@ -46,7 +46,19 @@ function draw(){
         if(song_1_status == false){
             song1.play();
 
-            document.getElementById("songname").innerHTML = "Song Name = Marshmello - Happier (Official).mp3";
+            document.getElementById("songname").innerHTML = "Song Name = Marshmello - Happier (Official)";
+        } 
+    }
+
+    if(scoreRightWrist > 0.2){
+
+        circle(rightWristX, rightWristY, 20);
+
+        song1.stop();
+        if(song_2_status == false){
+            song2.play();
+
+            document.getElementById("songname").innerHTML = "Song Name = Ed Sheeran - Shape Of You [Official]";
         } 
     }
 }
@@ -61,6 +73,9 @@ function gotPoses(results){
     if(results.length > 0)
     {
         console.log(results);
+
+        scoreRightWrist = results[0].pose.keypoints[10].score;
+        console.log("scoreRightWrist = " + scoreRightWrist);
         rightWristX = results[0].pose.rightWrist.x;
         rightWristY = results[0].pose.rightWrist.y;
         console.log("rightwristX = " + rightWristX + "rightwristY = " + rightWristY);
